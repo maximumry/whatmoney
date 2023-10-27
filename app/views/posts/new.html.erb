@@ -1,0 +1,5 @@
+<% form_with (model: @post, local: true) do |form| %>
+  <%= form.text_field :asset, placeholder: "総資産" %>
+  <%= form.text_area :text, placeholder: "Text" %>
+  <%# <%= form.file_field :image %>
+<% end %>
