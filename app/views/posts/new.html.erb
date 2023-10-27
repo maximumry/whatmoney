@@ -1,6 +1,7 @@
-<%= form_with(model: @post, local: true) do |form| %>
-  <%= form.text_field :asset, placeholder: "総資産" %>
-  <%= form.text_area :text, placeholder: "Text" %>
+<%= form_with(model: @post, local: true) do |f| %>
+  <%= render 'shared/error_messages', model: f.object %>
+  <%= f.text_field :asset, placeholder: "総資産" %>
+  <%= f.text_area :text, placeholder: "Text" %>
   <%# <%= form.file_field :image %>
-  <%= form.submit "SEND" %>
+  <%= f.submit "SEND" %>
 <% end %>
