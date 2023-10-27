@@ -1,2 +1,7 @@
 <h1>Hello World</h1>
 <%= link_to "投稿", new_post_path %>
+
+<% @posts.each do |post| %>
+  <%= post.asset %>
+  <%= post.text %>
+<% end %>
