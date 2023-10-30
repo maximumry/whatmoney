@@ -17,5 +17,15 @@ RSpec.describe Post, type: :model do
         @post.valid?
         expect(@post.errors.full_messages).to include("Asset can't be blank")
       end
+      it 'assetが整数意外の場合は投稿できない' do
+        @post.asset = "abc１２３"
+        @post.valid?
+        expect(@post.errors.full_messages).to include("Asset is not a number")
+      end
+      it 'textが空の場合は投稿できない' do
+        @post.text = ""
+        @post.valid?
+        expect(@post.errors.full_messages).to include("Text can't be blank")
+      end
   end
 end
