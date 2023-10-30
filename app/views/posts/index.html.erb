@@ -1,1 +1,10 @@
 <h1>Hello World</h1>
+<%= link_to "投稿", new_post_path %>
+<%= link_to "ログアウト", destroy_user_session_path, data: { turbo_method: :delete } %>
+<%= link_to "サインアップ", new_user_registration_path %>
+<%= link_to "サインイン", new_user_session_path %>
+<% @posts.each do |post| %>
+  <%= link_to post.user.nickname, user_path(post.user.id) %>
+  <%= post.asset %>
+  <%= post.text %>
+<% end %>
