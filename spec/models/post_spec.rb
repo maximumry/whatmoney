@@ -6,9 +6,16 @@ RSpec.describe Post, type: :model do
   end
 
   describe '新規投稿' do
-    it '全ての項目が入力していて投稿できる場合' do
-      @user.nickname = ''
-      @user.valid?
-      expect(@user.errors.full_messages).to include "Nickname can't be blank"
+    context '新規投稿できる場合'
+      it '全ての項目が入力していて投稿できる場合' do
+        expect(@post).to be_valid
+      end
     end
+    context '新規投稿できない場合' do
+      it '資産がからの場合は投稿できない' do
+        @post.asset = ""
+        @post.valid?
+        expect(@post.errors.full_messages).to include("Asset can't be blank")
+      end
+  end
 end
