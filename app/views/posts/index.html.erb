@@ -3,9 +3,11 @@
 <%= link_to "ログアウト", destroy_user_session_path, data: { turbo_method: :delete } %>
 <%= link_to "サインアップ", new_user_registration_path %>
 <%= link_to "サインイン", new_user_session_path %>
+<div>
 <% @posts.each do |post| %>
-  <%= link_to post.user.nickname, user_path(post.user.id) %>
-  <%= image_tag post.image.variant(resize: '300x300') if post.image.attached? %>
-  <%= post.asset %>
-  <%= post.text %>
+  <p><%= image_tag post.image.variant(resize: '300x300') if post.image.attached? %></p>
+  <p><%= link_to post.user.nickname, user_path(post.user.id) %></p>
+  <p><%= post.asset %></p>
+  <p><%= post.text %></p>
 <% end %>
+</div>
