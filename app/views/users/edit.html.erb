@@ -1,0 +1,13 @@
+<%= form_with(model: @user, local: true) do |f| %>
+  <%= f.label :nickname %>
+  <%= f.text_field :nickname, autofocus: true %>
+  <%= f.label :email %>
+  <%= f.email_field :email %>
+  <%= f.label :password %>
+  <%= f.password_field :password %>
+  <%= f.label :password_confirmation %>
+  <%= f.password_field :password_confirmation %>
+  <%= f.label :goal %>
+  <%= f.text_field :goal %>
+  <%= f.submit "更新" %>
+<% end %>
