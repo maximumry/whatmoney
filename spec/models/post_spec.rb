@@ -12,7 +12,7 @@ RSpec.describe Post, type: :model do
       end
     end
     context '新規投稿できない場合' do
-      it '資産がからの場合は投稿できない' do
+      it 'assetが空の場合は投稿できない' do
         @post.asset = ""
         @post.valid?
         expect(@post.errors.full_messages).to include("Asset can't be blank")
