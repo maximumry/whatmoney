@@ -24,6 +24,15 @@ class PostsController < ApplicationController
   def edit
     @post = Post.find(params[:id])
   end
+
+  def update
+    @post = Post.find(params[:id])
+    if @post.update(post_params)
+      redirect_to root_path
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
   private
   def post_params
     params.require(:post).permit(:asset, :text, :image).merge(user_id: current_user.id)
