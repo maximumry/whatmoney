@@ -1,0 +1,4 @@
+<p><%= image_tag @post.image.variant(resize: '300x300') if @post.image.attached? %></p>
+<p><%= link_to @post.user.nickname, user_path(@post.user.id) %></p>
+<p><%= @post.asset %></p>
+<p><%= @post.text %></p>
