@@ -4,3 +4,7 @@
 <p><%= @post.text %></p>
 <p><%= link_to "編集", edit_post_path(@post.id) %>
 <p><%= link_to "削除", post_path(@post.id), data: {turbo_method: :delete} %></p>
+
+<%= form_with(model: [@post, @comment], local: true) do |f| %>
+<%= f.text_area :text, placeholder: "コメントする" %>
+<%= f.submit "送信" %>
