@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
+  before_action :user_match, only: :edit
   def index
     @posts = Post.preload(:user).order("created_at DESC")
   end
@@ -36,5 +37,12 @@ class PostsController < ApplicationController
   private
   def post_params
     params.require(:post).permit(:asset, :text, :image).merge(user_id: current_user.id)
+  end
+  
+  def user_match
+    @post = Post.find(params[:id])
+    if @post.user != current_user
+      redirect_to root_path
+    end
   end
 end
