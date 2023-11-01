@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!, except: :index
+  before_action :authenticate_user!, except: [:index, :search]
   before_action :user_match, only: [:edit, :destroy]
   def index
     @posts = Post.preload(:user).order("created_at DESC")
@@ -41,6 +41,10 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post.destroy
     redirect_to root_path
+  end
+
+  def search
+    @posts = Post.search(params[:keyword])
   end
   private
   def post_params
