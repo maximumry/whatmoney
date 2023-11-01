@@ -10,9 +10,9 @@
 <p><%= link_to "情報変更", edit_user_path(@user.id) %></p>
 <h3>フォロー</h3>
 <% @user.followings.each do |user| %>
-  <p class=“f-user”><%= link_to user.name, user_path(user.id) %></p>
+  <p><%= link_to user.nickname, user_path(user.id) %></p>
 <% end %>
 <h3>フォロワー</h3>
 <% @user.followers.each do |user| %>
-  <%= link_to user.name, user_path(user.id) %></p>
+  <p><%= link_to user.nickname, user_path(user.id) %></p>
 <% end %>
