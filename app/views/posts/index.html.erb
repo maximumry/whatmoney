@@ -1,3 +1,4 @@
+<!-- 検索フォーム -->
 <%= form_with(url: search_posts_path, local: true, method: :get) do |form| %>
   <%= form.text_field :keyword, placeholder: "投稿を検索する" %>
   <%= form.submit "検索" %>
@@ -12,7 +13,6 @@
 <%= link_to "ログアウト", destroy_user_session_path, data: { turbo_method: :delete } %>
 <%= link_to "サインアップ", new_user_registration_path %>
 <%= link_to "サインイン", new_user_session_path %>
-<%= link_to current_user.nickname, user_path(current_user.id) %>
 <div>
 <% @posts.each do |post| %>
   <p><%= image_tag post.image.variant(resize: '300x300') if post.image.attached? %></p>
