@@ -32,6 +32,11 @@
     <%= f.text_field :goal %>
   </div>
 
+  <div class="field">
+    <%= f.label :style_id %><br />
+    <%= f.collection_select(:style_id, Style.all, :id, :name, {}) %>
+  </div>
+
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>

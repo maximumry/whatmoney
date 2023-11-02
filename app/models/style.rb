@@ -9,3 +9,7 @@ class Style < ActiveHash::Base
     { id: 7, name: 'バリュー株' },
     { id: 8, name: 'グロース株' }
   ]
+
+  include ActiveHash::Associations
+  has_many :users
+end
